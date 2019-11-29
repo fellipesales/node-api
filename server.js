@@ -1,19 +1,19 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const requireDir = require("require-dir")
+const requireDir = require("require-dir");
 
 //Iniciando o App
 const app = express();
 
-
 //Iniciando o DB
-mongoose.connect("mongodb://localhost:27017/nodeapi", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost:27017/nodeapi", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 requireDir("./src/models");
 
-const product = mongoose.model('Product')
-
 //Primeira rota
-app.use('/api', require('.src/routes'))
+app.use("/api", require("./src/routes"));
 
 app.listen(3001);
