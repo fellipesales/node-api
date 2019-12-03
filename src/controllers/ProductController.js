@@ -6,14 +6,11 @@ module.exports = {
     async index(req, res) {
         const { page = 1 } = req.query;
         const products = await Product.paginate({}, { page, limit: 10 });
-
         return res.json(products);
     },
 
-
     async show(req, res) {
         const product = await Product.findById(req.params.id);
-
         return res.json(product);
     },
 
@@ -29,7 +26,6 @@ module.exports = {
 
     async destroy(req, res) {
         await Product.findByIdAndRemove(req.params.id);
-
         return res.send();
     }
 };
